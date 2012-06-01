@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="left" >
+
+    <!-- view2 goes on the bottom -->
+
+    <TextView
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+    <!-- view3 stretches betweeen view1 and view2 -->
+
+    <!-- <view
+        android:id="@+id/drawing"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/view2"
+        class="br.com.drawing.DrawingDroidView" />-->
+    
+    <br.com.drawing.view.QuadroDeDesenho android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/quadroDeDesenho" />
+    <Button
+        android:id="@+id/mao_livre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/mao_livre" />
+    
+    <Button
+        android:id="@+id/reta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:background="@drawable/reta" />
+
+    <Button
+        android:id="@+id/circulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="120dp"
+        android:background="@drawable/circulo" />
+
+    
+    <Button
+        android:id="@+id/apagar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/apagar" />
+    
+    <Button
+        android:id="@+id/novo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/novo" />
+</RelativeLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="hello">Bem-vindo ao Drawing Droid!</string>
+    <string name="app_name">Drawing Droid</string>
+    <string name="titulo">Drawing Droid</string>
+    
+    <!-- Botoes Tela Principal -->
+    <string name="play_label">Iniciar</string>
+    <string name="sobre_label">Sobre</string>
+    <string name="sair_label">Sair</string>
+    
+    <!-- Sobre -->
+    <string name="sobre_title">Drawing Droid</string>
+    <string name="sobre_texto">Programa de desenho 1.0 - <i>Alexandre Papanis</i>.</string>
+</resources>
