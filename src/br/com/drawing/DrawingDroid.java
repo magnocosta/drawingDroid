@@ -1,7 +1,7 @@
 package br.com.drawing;
 
-import br.com.drawing.shape.FabricaDeFormas;
 import br.com.drawing.view.QuadroDeDesenho;
+import br.com.drawing.view.TipoDeAcao;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +16,6 @@ public class DrawingDroid extends Activity {
 
 	private QuadroDeDesenho quadroDeDesenho;
 
-	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,7 +28,7 @@ public class DrawingDroid extends Activity {
 		btnMaoLivre.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				DrawingDroidView.modo = MAO_LIVRE;
+				quadroDeDesenho.setTipoDeForma(TipoDeAcao.ACAO_DESENHAR_MAO_LIVRE);
 			}
 		});
 
@@ -37,7 +36,7 @@ public class DrawingDroid extends Activity {
 		btnReta.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				quadroDeDesenho.setTipoDeForma(FabricaDeFormas.FORMA_TIPO_RETA);
+				quadroDeDesenho.setTipoDeForma(TipoDeAcao.ACAO_DESENHAR_RETA);
 			}
 		});
 
@@ -45,7 +44,7 @@ public class DrawingDroid extends Activity {
 		btnCirculo.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				quadroDeDesenho.setTipoDeForma(FabricaDeFormas.FORMA_TIPO_CIRCULO);
+				quadroDeDesenho.setTipoDeForma(TipoDeAcao.ACAO_DESENHAR_CIRCULO);
 			}
 		});
 
@@ -53,7 +52,7 @@ public class DrawingDroid extends Activity {
 		btnNovo.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				quadroDeDesenho.limparDesenho();
+				quadroDeDesenho.setTipoDeForma(TipoDeAcao.ACAO_SELECIONAR_FORMA);
 			}
 		});
 
@@ -61,7 +60,7 @@ public class DrawingDroid extends Activity {
 		btnApagar.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				quadroDeDesenho.removerUltimoDesenho();
+				quadroDeDesenho.removerDesenho();
 			}
 		});
 

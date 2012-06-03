@@ -2,16 +2,18 @@ package br.com.drawing.shape;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 
 public class Circulo extends Forma {
 
 	private float raio = 10;
 
-	Circulo(float x, float y) {
-		this.inicialX = x;
-		this.inicialY = y;
-		this.cor = new Paint();
+	Circulo() {
+		init();
+	}
+
+	@Override
+	protected void init() {
+		super.init();
 		this.cor.setColor(Color.BLUE);
 	}
 
@@ -23,9 +25,19 @@ public class Circulo extends Forma {
 	}
 
 	@Override
-	public void setFinalPosition(float x, float y) {
+	public void setPosicaoFinal(float x, float y) {
 		this.raio = (float) Math.sqrt(Math.pow((x - inicialX), 2)
 				+ Math.pow((y - inicialY), 2));
+	}
+
+	@Override
+	public float getPosicaoDeSelecaoX() {
+		return inicialX;
+	}
+
+	@Override
+	public float getPosicaoDeSelecaoY() {
+		return inicialY;
 	}
 
 }

@@ -1,18 +1,21 @@
 package br.com.drawing.shape;
 
+import br.com.drawing.view.TipoDeAcao;
+
 
 public class FabricaDeFormas {
 
-	public static final int FORMA_TIPO_CIRCULO = 0;
-	public static final int FORMA_TIPO_RETA = 1;
-
 	public static Forma getForma(int type, float x, float y) {
 		Forma forma = null;
-		if (type == FORMA_TIPO_CIRCULO) {
-			forma = new Circulo(x, y);
-		} else if (type == FORMA_TIPO_RETA) {
-			forma = new Reta(x, y);
+		if (type == TipoDeAcao.ACAO_DESENHAR_CIRCULO) {
+			forma = new Circulo();
+		} else if (type == TipoDeAcao.ACAO_DESENHAR_RETA) {
+			forma = new Reta();
+		} else if (type == TipoDeAcao.ACAO_DESENHAR_MAO_LIVRE) {
+			forma = new MaoLivre();
 		}
+
+		forma.setPosicaoInicial(x, y);
 		return forma;
 	}
 
