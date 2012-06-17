@@ -1,13 +1,11 @@
 package br.com.drawing.view;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import br.com.drawing.shape.FabricaDeFormas;
@@ -80,7 +78,6 @@ public class QuadroDeDesenho extends View {
 
 	public void removerDesenho() {
 		if (alvo != null) {
-			Log.w("TESTE", MessageFormat.format("objeto : {0} selecionado", formasDesenhadas.indexOf(alvo)));
 			formasDesenhadas.remove(formasDesenhadas.indexOf(alvo));
 			alvo = null;
 			invalidate();
@@ -109,8 +106,6 @@ public class QuadroDeDesenho extends View {
 			float raioDeDistancia = (float) Math.sqrt(Math.pow(
 					(posicaoDeSelecaoX - x), 2)
 					+ Math.pow((posicaoDeSelecaoY - y), 2));
-			Log.w("TESTE", MessageFormat.format("raio de distancia: {0}", raioDeDistancia));
-			Log.w("TESTE", MessageFormat.format("raio selecionado: {0}", raioDoObjetoSelecionado));
 			if (raioDeDistancia < raioDoObjetoSelecionado) {
 				alvo = forma;
 				raioDoObjetoSelecionado = raioDeDistancia;

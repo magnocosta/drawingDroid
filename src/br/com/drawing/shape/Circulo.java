@@ -14,7 +14,7 @@ public class Circulo extends Forma {
 	@Override
 	protected void init() {
 		super.init();
-		this.cor.setColor(Color.BLUE);
+		this.cor.setColor(Color.GRAY);
 	}
 
 	@Override

@@ -4,25 +4,17 @@
     android:layout_height="match_parent"
     android:gravity="left" >
 
-    <!-- view2 goes on the bottom -->
-
     <TextView
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
-
-    <!-- view3 stretches betweeen view1 and view2 -->
-
-    <!-- <view
-        android:id="@+id/drawing"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_alignParentTop="true"
-        android:layout_above="@id/view2"
-        class="br.com.drawing.DrawingDroidView" />-->
+ 
+    <br.com.drawing.view.QuadroDeDesenho 
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent" 
+        android:id="@+id/quadroDeDesenho" />
     
-    <br.com.drawing.view.QuadroDeDesenho android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/quadroDeDesenho" />
     <Button
         android:id="@+id/mao_livre"
         android:layout_width="wrap_content"
@@ -48,7 +40,6 @@
         android:layout_marginLeft="120dp"
         android:background="@drawable/circulo" />
 
-    
     <Button
         android:id="@+id/apagar"
         android:layout_width="wrap_content"
@@ -63,4 +54,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:background="@drawable/novo" />
+    
+    <Button
+        android:id="@+id/selecionar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"
+        android:background="@drawable/selecionar" />
+    
 </RelativeLayout>

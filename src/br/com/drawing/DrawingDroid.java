@@ -52,6 +52,15 @@ public class DrawingDroid extends Activity {
 		btnNovo.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
+				quadroDeDesenho.limparDesenho();
+			}
+		});
+		
+		View btnSelecionar = findViewById(R.id.selecionar);
+		btnSelecionar.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
 				quadroDeDesenho.setTipoDeForma(TipoDeAcao.ACAO_SELECIONAR_FORMA);
 			}
 		});
