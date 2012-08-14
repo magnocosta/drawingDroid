@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="teste" basedir="." >
+
+    <property name="project.bin" value="bin" />
+    <property name="project.src" value="src" />
+    <property name="project.lib" value="lib" />
+    <property name="project.dist" value="dist" />
+    <property name="project.name" value="teste" />
+    <property name="project.jar.name" value="teste.jar" />
+    <property name="project.manifest.verson" value="1.0" />
+    <property name="project.manifest.component" value="" />
+    <property name="project.manifest.vendor" value="drawingdroid.com.br" />
+    <property name="sfs.home.dir" value="/Applications/SmartFoxServer2X/SFS2X/" />
+    <property name="sfs.extension.dir" value="${sfs.home.dir}/extensions/" />
+    
+    <path id="classpath.project" >
+        <pathelement location="${project.bin}" />
+        <fileset dir="${project.lib}" >
+            <include name="*.jar" />
+        </fileset>
+    </path>
+
+    <target name="01-Clean" >
+        <echo message="LIMPANDO OS DIRETORIOS DO MODULO : ${project.name}" />
+        <delete dir="${project.bin}" />
+        <delete dir="${project.dist}" />
+        <mkdir dir="${project.bin}" />
+        <mkdir dir="${project.dist}" />
+    </target>
+
+    <target name="02-Compile" depends="01-Clean" >
+        <echo message="COMPILANDO OS ARQUIVOS : ${project.name}" />
+        <javac destdir="${project.bin}" includeantruntime="false" srcdir="${project.src}" >
+            <classpath refid="classpath.project" />
+        </javac>
+    </target>
+    
+    <target name="03-Package" depends="02-Compile">
+        <pathconvert property="libs.project" pathsep=" ">
+			<mapper>
+				<chainedmapper>
+					<flattenmapper />
+					<globmapper from="*" to="lib/*" />
+				</chainedmapper>
+			</mapper>
+			<path>
+				<fileset dir="${project.lib}">
+					<include name="**/*.jar" />
+				</fileset>
+			</path>
+		</pathconvert>
+		<exec executable="date" osfamily="unix" outputproperty="jar.date" failifexecutionfails="false" failonerror="false" />
+		<exec executable="cmd" osfamily="windows" outputproperty="jar.date">
+			<arg value="/c" />
+			<arg value="date" />
+			<arg value="\/t" />
+		</exec>
+		<exec executable="cmd" osfamily="windows" outputproperty="jar.time">
+			<arg value="/c" />
+			<arg value="time" />
+			<arg value="\/t" />
+		</exec>
+        <jar destfile="${project.dist}/${project.jar.name}" duplicate="fail">
+			<zipfileset dir="${project.bin}" includes="**/*.class" />
+				<manifest>
+					<attribute name="Built-At" value="${jar.date}${jar.time}" />
+					<attribute name="Class-Path" value="${libs.project}" />
+					<section name="${project.name}">
+						<attribute name="Component" value="${project.manifest.component}" />
+						<attribute name="Vendor" value="${project.manifest.vendor}" />
+						<attribute name="Version" value="${project.manifest.version}" />
+					</section>
+				</manifest>
+			</jar>
+    </target>
+    
+    <target name="04-Deploy" depends="03-Package">
+        <echo message="REALIZANDO DEPLOY : ${project.name}" />
+		<copy file="${project.dist}/${project.jar.name}" todir="${sfs.extension.dir}" />
+    </target>
+
+</project>
